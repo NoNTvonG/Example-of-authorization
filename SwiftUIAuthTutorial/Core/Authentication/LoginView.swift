@@ -8,17 +8,29 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
     var body: some View {
         VStack{
-            // Image
             Image("firebase-icon")
                 .resizable()
                 .scaledToFill()
                 .frame(width: 100, height: 130)
                 .padding(.vertical, 32)
-            // form
             
-            // login button
+            InputView(title: "Email", text: $email, placeholder: "email@example.com")
+                .autocapitalization(.none)
+            InputView(title: "Password", text: $password, placeholder: "Enter your password", isSecureField: true)
+                .autocapitalization(.none)
+            
+            
+            Button {
+                print("Login action")
+            } label: {
+                Text("Login")
+            }
+
             
             Spacer()
             
