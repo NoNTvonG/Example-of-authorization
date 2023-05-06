@@ -12,29 +12,50 @@ struct LoginView: View {
     @State private var password: String = ""
     
     var body: some View {
-        VStack{
-            Image("firebase-icon")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 130)
-                .padding(.vertical, 32)
-            
-            InputView(title: "Email", text: $email, placeholder: "email@example.com")
-                .autocapitalization(.none)
-            InputView(title: "Password", text: $password, placeholder: "Enter your password", isSecureField: true)
-                .autocapitalization(.none)
-            
-            
-            Button {
-                print("Login action")
-            } label: {
-                Text("Login")
-            }
+        NavigationStack {
+            VStack{
+                Image("firebase-icon")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 130)
+                    .padding(.vertical, 32)
+                
+                VStack(spacing: 24){
+                    InputView(title: "Email", text: $email, placeholder: "email@example.com")
+                        .autocapitalization(.none)
+                    InputView(title: "Password", text: $password, placeholder: "Enter your password", isSecureField: true)
+                        .autocapitalization(.none)
+                }
+                .padding(.horizontal)
+                .padding(.top, 16)
+                
+                Button {
+                    print("Login action")
+                } label: {
+                    HStack{
+                        Text("Sign in")
+                        Image(systemName: "arrow.right")
+                    }
+                    .foregroundColor(Color(.white))
+                    .frame(width: UIScreen.main.bounds.size.width - 32, height: 48)
+                }
+                .background(Color(.systemBlue))
+                .cornerRadius(10)
+                .padding(.top, 32)
 
-            
-            Spacer()
-            
-            // register button
+                
+                Spacer()
+                NavigationLink {
+                    RegistrationView()
+                } label: {
+                    HStack(spacing: 3){
+                        Text("Don't have an account?")
+                        Text("Sign Up")
+                            .fontWeight(.bold)
+                    }
+                    .font(.system(size: 14))
+                }
+            }
         }
     }
 }
