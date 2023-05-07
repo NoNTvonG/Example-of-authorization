@@ -19,7 +19,7 @@ struct LoginView: View {
                     .scaledToFill()
                     .frame(width: 100, height: 130)
                     .padding(.vertical, 32)
-                
+                 
                 VStack(spacing: 24){
                     InputView(title: "Email", text: $email, placeholder: "email@example.com")
                         .autocapitalization(.none)
@@ -43,10 +43,11 @@ struct LoginView: View {
                 .cornerRadius(10)
                 .padding(.top, 32)
 
-                
                 Spacer()
+                
                 NavigationLink {
                     RegistrationView()
+                        .navigationBarBackButtonHidden()
                 } label: {
                     HStack(spacing: 3){
                         Text("Don't have an account?")
